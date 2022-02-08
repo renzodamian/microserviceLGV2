@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rdjaramillo1.ms.userservice.entity.User;
+import rdjaramillo1.ms.userservice.model.Bike;
+import rdjaramillo1.ms.userservice.model.Car;
 import rdjaramillo1.ms.userservice.service.UserService;
 
 import java.util.List;
@@ -37,5 +39,21 @@ public class UserController {
         User userNew = userService.save(user);
         return ResponseEntity.ok(user);
     }
+    @GetMapping("/cars/{userId}")
+    public ResponseEntity<List<Car>> getCars(@PathVariable("userId") int userId){
+        User user = userService.getUserById(userId);
+        if (user == null)
+            return  ResponseEntity.notFound().build();
+        List<Car> cars = userService.getCars(userId);
+        return ResponseEntity.ok(cars);
+    }
 
+    @GetMapping("/bikes/{userId}")
+    public ResponseEntity<List<Bike>> geBikes(@PathVariable("userId") int userId){
+        User user = userService.getUserById(userId);
+        if (user == null)
+            return  ResponseEntity.notFound().build();
+        List<Bike> bikes = userService.getBikes(userId);
+        return ResponseEntity.ok(bikes);
+    }
 }

@@ -38,7 +38,7 @@ public class UserController {
     @PostMapping()
     public ResponseEntity<User> save(@RequestBody User user){
         User userNew = userService.save(user);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userNew);
     }
     @GetMapping("/cars/{userId}")
     public ResponseEntity<List<Car>> getCars(@PathVariable("userId") int userId){
@@ -60,7 +60,7 @@ public class UserController {
 
     @PostMapping("/savecar/{userId}")
     public ResponseEntity<Car> saveCar (@PathVariable("userId") int userId, @RequestBody Car car){
-        if (userService.getUserById(userId)== null)
+        if (userService.getUserById(userId) == null)
             return ResponseEntity.notFound().build();
         Car carNew = userService.saveCar(userId, car);
         return ResponseEntity.ok(car);

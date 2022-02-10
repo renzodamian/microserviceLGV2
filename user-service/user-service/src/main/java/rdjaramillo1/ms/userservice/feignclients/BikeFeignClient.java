@@ -6,7 +6,7 @@ import rdjaramillo1.ms.userservice.model.Bike;
 
 import java.util.List;
 
-@FeignClient(name = "bike-service"/*, url = "http://localhost:8003/bike"*/)
+@FeignClient(name = "bike-service")
 @RequestMapping("/bike")
 public interface BikeFeignClient {
 
@@ -15,7 +15,6 @@ public interface BikeFeignClient {
 
 
     @GetMapping("/byuser/{userId}")
-    @RequestMapping(method = RequestMethod.GET, value = "/bike")
     List<Bike> getBikes(@PathVariable("userId") int userId);
 
 

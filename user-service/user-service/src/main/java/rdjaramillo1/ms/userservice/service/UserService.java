@@ -1,15 +1,16 @@
 package rdjaramillo1.ms.userservice.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.client.RestTemplate;
+
+
 import rdjaramillo1.ms.userservice.entity.User;
 import rdjaramillo1.ms.userservice.feignclients.BikeFeignClient;
 import rdjaramillo1.ms.userservice.feignclients.CarFeignClient;
 import rdjaramillo1.ms.userservice.model.Bike;
 import rdjaramillo1.ms.userservice.model.Car;
 import rdjaramillo1.ms.userservice.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -64,7 +65,6 @@ public class UserService {
         return  bikeNew;
     }
     public Map<String, Object> getUserAndVehicles (int userId){
-
         Map<String, Object> result = new HashMap<>();
         User user = userRepository.findById(userId).orElse(null);
         if (user == null){

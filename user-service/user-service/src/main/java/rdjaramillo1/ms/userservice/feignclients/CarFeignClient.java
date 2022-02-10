@@ -6,7 +6,8 @@ import rdjaramillo1.ms.userservice.model.Car;
 
 import java.util.List;
 
-@FeignClient(name = "car-service", url = "http://localhost:8002/car")
+@FeignClient(name = "car-service"/*, url = "http://localhost:8002/car"*/)
+@RequestMapping("/car")
 public interface CarFeignClient {
 
     @PostMapping()
